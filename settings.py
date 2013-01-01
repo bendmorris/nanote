@@ -37,7 +37,8 @@ defaults = [
             ('bullet_symbols', '*o>-+'),
             ('comment_re', '\#.*'),
             ('delete_codes', str(curses.KEY_DC)),
-            ('backspace_codes', str(curses.KEY_BACKSPACE)+(',127' if not curses.KEY_BACKSPACE==127 else '')),
+            ('backspace_codes', str(curses.KEY_BACKSPACE)+
+                                (',127' if not 127 in (curses.KEY_BACKSPACE, curses.KEY_DC) else '')),
             ]
 
 config = ConfigParser.SafeConfigParser()
