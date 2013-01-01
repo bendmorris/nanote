@@ -2,6 +2,7 @@ import argparse
 import ConfigParser
 import os
 import sys
+import curses
 
 
 
@@ -35,6 +36,8 @@ defaults = [
             ('bullet_re', '^ *\* .*'),
             ('bullet_symbols', '*o>-+'),
             ('comment_re', '\#.*'),
+            ('delete_codes', str(curses.KEY_DC)),
+            ('backspace_codes', str(curses.KEY_BACKSPACE)+(',127' if not curses.KEY_BACKSPACE==127 else '')),
             ]
 
 config = ConfigParser.SafeConfigParser()
@@ -59,6 +62,8 @@ NOTE_SEARCH_PATHS = '.:' + args['path']
 
 NOTE_SEARCH_PATHS = [os.path.expanduser(p) for p in NOTE_SEARCH_PATHS.split(':')]
 
+delete_codes = [int(s) for s in args['delete_codes'].split(',')]
+backspace_codes = [int(s) for s in args['backspace_codes'].split(',')]
 
 for path in NOTE_SEARCH_PATHS:
     make_dir_if_not_exists(path)

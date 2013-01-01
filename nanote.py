@@ -128,10 +128,10 @@ def main():
                             editor.buffer = (editor.buffer[:cy] + [editor.buffer[cy][:cx]] + 
                                              [editor.buffer[cy][cx:]] + editor.buffer[cy+1:])
                         editor.correct_cursor(cy+1, 0)
-                elif c in (127, curses.KEY_BACKSPACE):
+                elif c in settings.backspace_codes:
                     editor.correct_cursor(cy, cx-1)
                     editor.del_char(cy, cx-1)
-                elif c == curses.KEY_DC:
+                elif c == settings.delete_codes:
                     editor.alter()
                     editor.del_char(cy, cx)
                 elif c == ord('\t'):
