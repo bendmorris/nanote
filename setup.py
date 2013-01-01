@@ -1,9 +1,9 @@
 from setuptools import setup
-from __init__ import VERSION
+from __init__ import __version__
 
 
 setup(name='nanote',
-      version=VERSION,
+      version=__version__,
       description='nanote terminal note-taking software',
       author='Ben Morris',
       author_email='ben@bendmorris.com',

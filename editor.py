@@ -2,7 +2,7 @@ import curses
 import settings as settings_module
 import os
 import re
-from __init__ import VERSION
+from __init__ import __version__
 
 
 class Editor:
@@ -91,7 +91,7 @@ class Editor:
         self.shortcut_win.noutrefresh()
 
         note_name = self.current_note if self.current_note else 'untitled'
-        title_text = '  nanote %s' % (VERSION)
+        title_text = '  nanote %s' % (__version__)
         note_name_text = str(note_name) + ('*' if self.altered else '')
         total_gap = width - len(note_name_text) - 1
         left_gap = total_gap/2 - len(title_text)
